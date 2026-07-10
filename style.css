@@ -1,0 +1,1092 @@
+/* ==========================================
+   1. CORE INITIALIZATION & BASE FONTS
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+/* ==========================================
+   1. THEME VARIABLES CONFIGURATION (FIXED)
+   ========================================== */
+:root {
+    /* Default Light Theme - Crisp & Clean */
+    --bg-primary: #f8fafc;        /* Soft white background */
+    --bg-header: #ffffff;         /* Pure white header */
+    --bg-card: #ffffff;           /* Clean white cards */
+    --border-color: #e2e8f0;      /* Soft light gray borders */
+    --text-main: #0f172a;         /* CRITICAL FIX: Dark slate/black text for readability */
+    --text-muted: #475569;        /* Dark gray subtext */
+    --text-navbar: #475569;       /* Readable navbar links */
+    --accent-color: #7c3aed;      /* Vivid Purple details */
+    --accent-glow: rgba(124, 58, 237, 0.15);
+    --radial-glow: radial-gradient(circle at 30% 40%, rgba(124, 58, 237, 0.05), transparent 50%);
+}
+
+body.dark-theme {
+    /* Your Premium Deep-Plum/Purple Dark Mode */
+    --bg-primary: #0b0713;        /* Your deep eggplant black background */
+    --bg-header: #0b0713;         /* Matching deep plum header background */
+    --bg-card: #140e24;           /* Your subtle dark violet card tiles */
+    --border-color: #251b3d;      /* Deep purple panel borders */
+    --text-main: #e2e8f0;         /* Pure light off-white text */
+    --text-muted: #94a3b8;        /* Muted slate text labels */
+    --text-navbar: #94a3b8;       /* Light grey navbar links */
+    --accent-color: #c084fc;      /* Signature custom neon violet highlight */
+    --accent-glow: rgba(139, 92, 246, 0.25);
+    --radial-glow: radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.12), transparent 50%);
+}
+
+/* ==========================================
+   2. BASE STYLES WITH VARIABLES
+   ========================================== */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+}
+
+section {
+    padding: 120px 10%;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+h2 {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* ==========================================
+   3. FIXED HEADER & LOGO TYPOGRAPHY
+   ========================================== */
+header {
+    background-color: var(--bg-header); /* Dynamically switches white/black */
+    backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 40px;
+}
+
+.logo {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color); /* Matches theme color dynamically */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+nav ul li a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-navbar);
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================
+   4. HERO CONTENT MAPS (CLEANED)
+   ========================================== */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 10% 60px 10%;
+    background: var(--radial-glow);
+    transition: background 0.4s ease;
+}
+
+.name-display {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: var(--text-main) !important; /* FIXED: Now switches to black in light theme */
+    line-height: 1.1;
+    margin-bottom: 8px;
+    transition: color 0.4s ease;
+}
+
+.greeting-lbl {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.hero-right-col h2 {
+    font-size: 1.6rem;
+    color: var(--text-main);
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hero-bio-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+
+/* Updated dynamic radial background container for Hero */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 10% 60px 10%;
+    background: var(--radial-glow);
+    transition: background 0.4s ease;
+}
+
+/* Update Card Background properties to listen to the active layout theme */
+.about-card, .timeline-content, .project-card, .slide-item {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+/* Update Text parameters inside descriptive content areas */
+.hero-bio-text, #about p, .timeline-content p, .project-card p {
+    color: var(--text-muted) !important;
+}
+
+.greeting-lbl, .hero-right-col h2 {
+    color: var(--text-main) !important;
+}
+
+.hero-right-col .typed-text {
+    color: var(--accent-color) !important;
+}
+
+/* ==========================================
+   THEME SWITCH ICON TOGGLE BUTTON STYLING
+   ========================================== */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    margin-left: 15px;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(124, 58, 237, 0.1);
+}
+
+
+
+
+/* ==========================================
+   3. HERO SECTION (CENTERED TEXT WITH AVATAR)
+   ========================================== */
+
+.hero-content h1 {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 3.2rem;
+    color: #f8fafc;
+    margin-bottom: 12px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+.cv-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #8b5cf6;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 30px; /* Pill-shaped button matching sample video layout */
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+
+.cv-btn:hover {
+    background-color: #7c3aed;
+    transform: translateY(-2px);
+}
+
+/* Avatar positioning overlapping next section */
+.profile-avatar-container {
+    margin-top: 50px;
+    transform: translateY(45px);
+    z-index: 10;
+}
+
+.avatar-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #140e24; /* Seamless card boundary spacing */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ==========================================
+   4. ELEVATED CARD CONFIGURATION (FIXED BACKGROUND)
+   ========================================== */
+#about {
+    /* FIX: Removed the dark #08050e background color completely */
+    background-color: var(--bg-primary); 
+    padding-top: 80px;
+    transition: background-color 0.4s ease;
+}
+
+/* ==========================================
+   UPDATED ABOUT CARD WITH THEME SHADOWS
+   ========================================== */
+.about-card {
+    background-color: var(--bg-card) !important;
+    width: 100%;
+    max-width: 750px;
+    padding: 50px 40px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color) !important;
+    text-align: center;
+    
+    /* FIX: Uses a super light gray/purple subtle shadow by default instead of the harsh black shadow */
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.06); 
+    
+    /* Smooth transition for when the arrow touches it */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Dynamic glow state triggered ONLY when the arrow/cursor touches it */
+.about-card:hover {
+    transform: translateY(-3px); /* Gentle microscopic lift up */
+    border-color: #8b5cf6 !important; /* Lights up the border with purple */
+    
+    /* FIX: Activates your clean theme glow instead of a black shadow */
+    box-shadow: 0 15px 35px var(--accent-glow); 
+}
+
+.about-card h2 {
+    margin-bottom: 20px;
+}
+
+.about-card p {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.about-card strong {
+    color: #c084fc;
+}
+
+/* ==========================================
+   5. TECH STACK LABELS
+   ========================================== */
+/* ==========================================
+   INFINITE SCROLLING TECH STACK SLIDER
+   ========================================== */
+.slider-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden; /* Hides the icons outside the display box box */
+    position: relative;
+    padding: 20px 0;
+}
+
+/* Optional soft shadow gradient edges so icons fade nicely at the borders */
+.slider-container::before,
+.slider-container::after {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+.slider-container::before {
+    left: 0;
+    top: 0;
+    background: linear-gradient(to right, #0b0713 0%, transparent 100%);
+}
+.slider-container::after {
+    right: 0;
+    top: 0;
+    background: linear-gradient(to left, #0b0713 0%, transparent 100%);
+}
+
+/* The horizontal container row animating forever */
+.slider-track {
+    display: flex;
+    width: calc(240px * 22); /* Computes track length based on your item count */
+    animation: scrollInfinite 25s linear infinite;
+}
+
+/* Pauses the carousel animation when user points their cursor at it */
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+/* Individual Tech Icon Cards */
+
+/* ==========================================
+   5. MY TECH STACK HOVER DESIGN (FIXED)
+   ========================================== */
+.slide-item {
+    width: 200px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px;
+    margin: 0 20px;
+    
+    /* Soft theme shadow when idle */
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.04);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Purple glow effect when cursor touches tech item */
+.slide-item:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 12px 30px var(--accent-glow);
+}
+
+/* ==========================================
+   6. EDUCATION HOVER DESIGN (FIXED)
+   ========================================== */
+.timeline-content {
+    width: 45%;
+    background-color: var(--bg-card) !important;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color) !important;
+    
+    /* Soft theme shadow when idle */
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.04);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scaling pop-out expansion with theme glow when cursor touches education item */
+.timeline-content:hover {
+    transform: scale(1.04); 
+    border-color: #8b5cf6 !important; 
+    box-shadow: 0 15px 35px var(--accent-glow);
+}
+
+/* ==========================================
+   7. PROJECTS HOVER DESIGN (FIXED)
+   ========================================== */
+.project-card {
+    background-color: var(--bg-card) !important;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* Soft theme shadow when idle */
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.04);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scaling pop-out expansion with theme glow when cursor touches project card */
+.project-card:hover {
+    transform: scale(1.03);
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 15px 35px var(--accent-glow);
+}
+
+.slide-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.slide-item span {
+    font-size: 0.95rem;
+    font-weight: 600; /* Made slightly bolder for excellent readability */
+    
+    /* CRITICAL FIX: Dynamically shifts font to dark slate/black in light mode */
+    color: var(--text-main) !important; 
+    
+    transition: color 0.4s ease;
+}
+/* ==========================================
+   THE ANIMATION CONTROLLER 
+   ========================================== */
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Translates exactly half the length of your combined elements */
+        transform: translateX(calc(-240px * 11)); 
+    }
+}
+
+.skill-item strong {
+    font-family: 'Cambria', Georgia, serif;
+    color: #c084fc;
+    display: block;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+}
+
+.skill-item p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   6. VERTIClE CONNECTOR TIMELINE (EDUCATION)
+   ========================================== */
+.timeline {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    padding: 20px 0;
+}
+
+/* Central spine connector string line from video sample layout */
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: #8b5cf6;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.time-period {
+    width: 45%;
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #c084fc;
+    font-family: 'Cambria', Georgia, serif;
+    padding: 0 20px;
+}
+
+.timeline-item:nth-child(even) .time-period {
+    text-align: left;
+}
+
+/* ==========================================
+   6. VERTIClE CONNECTOR TIMELINE (EXPANSION HOVER EFFECT)
+   ========================================== */
+.timeline-content {
+    width: 45%;
+    background-color: #140e24;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #251b3d; /* Clean static card border border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    /* Crucial: Makes the physical size change feel like a smooth, elastic pop */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+
+
+.timeline-content h3 {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.1rem;
+    color: #f8fafc;
+    margin-bottom: 6px;
+}
+
+.timeline-content p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.stat-badge {
+    display: inline-block;
+    background-color: rgba(139, 92, 246, 0.15);
+    color: #c084fc;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   7. PROJECTS GRID DISPLAY 
+   ========================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+
+/* ==========================================
+   FORCE PROJECT TITLES TO MATCH EXACT PURPLE
+   ========================================== */
+html body #projects .project-card h3,
+html body .project-card h3 {
+    color: #9061f9 !important;
+    font-family: 'Cambria', Georgia, serif !important;
+    font-weight: 700 !important;
+}
+.project-card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ==========================================
+   PROJECT TAGS THEME ENGINE CONTROLLER
+   ========================================== */
+/* Default Light Mode Style: Clean white background with black text */
+.project-tags span,
+.project-card .project-tags span,
+#projects .project-card span {
+    background-color: #ffffff !important; 
+    color: #0b0713 !important;            /* Sharp dark plum text */
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0 !important; 
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* FIX: When body has '.dark-theme', switch tags to dark purple background with white text */
+body.dark-theme .project-tags span,
+body.dark-theme .project-card .project-tags span,
+body.dark-theme #projects .project-card span {
+    background-color: #1c1433 !important; /* Premium matching dark purple tone */
+    color: #ffffff !important;            /* Clean white text */
+    border: 1px solid #2b1f4c !important; /* Subtle dark border line */
+}
+/* ==========================================
+   8. CONTACT FOOTER
+   ========================================== */
+#contact {
+    background-color: #07040c;
+    text-align: center;
+    padding: 60px 10% 40px 10%;
+    border-top: 1px solid #140e24;
+}
+
+#contact p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.email-link {
+    color: #8b5cf6;
+    font-weight: 600;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+    color: #475569;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: #c084fc;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: #475569 !important;
+}
+
+/* ==========================================
+   9. RESPONSIVE COMPACT MEDIA RULES
+   ========================================== */
+@media (max-width: 768px) {
+    nav ul { display: none; } /* Standard compact menu bypass */
+    #hero h1 { font-size: 2.3rem; }
+    .timeline::before { left: 20px; }
+    .timeline-item { flex-direction: column !important; align-items: flex-start; }
+    .time-period { width: 100%; text-align: left !important; padding-left: 40px; margin-bottom: 10px; }
+    .timeline-content { width: 100%; margin-left: 40px; }
+}
+/* ==========================================
+   UPDATED ABOUT CARD WITH HOVER EFFECT
+   ========================================== */
+.about-card {
+    background-color: #140e24; /* Base dark violet color */
+    width: 100%;
+    max-width: 750px;
+    padding: 50px 40px;
+    border-radius: 16px;
+    
+    /* Starting border (clean and subtle when untouched) */
+    border: 2px solid transparent; 
+    
+    /* Soft baseline shadow matching Screenshot 7.34.06 */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+    text-align: center;
+    
+    /* Crucial: Makes the switch between normal and hovered state smooth */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* The dynamic effect triggered when the cursor touches the card */
+.about-card:hover {
+    transform: translateY(-2px); /* Slight microscopic lift */
+    
+    /* Light up the border with your theme's purple matching Screenshot 7.34.14 */
+    border-color: #8b5cf6; 
+    
+    /* Vibrant neon purple outer glow effect */
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.25); 
+}
+/* ==========================================
+   UPDATED HERO LAYOUT (MATCHING image_0ce87a.jpg)
+   ========================================== */
+
+.hero-layout-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    gap: 60px;
+}
+
+/* Left side Column: Photo Frame */
+.hero-left-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Back drop neon shadow frame effect mirroring image_0ce87a.jpg */
+.profile-avatar-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    transform: none; /* Removed the previous overlapping section shift */
+}
+
+/* Neon glow backdrop element around the circular image boundary */
+.profile-avatar-container::before {
+    content: '';
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background-color: rgba(139, 92, 246, 0.3); /* Bright neon purple aura */
+    border-radius: 50%;
+    filter: blur(40px); /* Creates the soft glowing atmosphere shadow */
+    z-index: 1;
+}
+
+.avatar-img {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #8b5cf6; /* Strong primary highlight outline ring */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* Right side Column: Typography contents */
+.hero-right-col {
+    flex: 1.3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; /* Left alignment matching the screenshot formatting sample */
+}
+
+.greeting-lbl {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.name-display {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.hero-right-col h2 {
+    font-size: 1.6rem;
+    color: #e2e8f0;
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hero-right-col .typed-text {
+    color: #c084fc; /* Contrast neon text highlight styling coloring */
+    font-weight: 600;
+}
+
+.hero-bio-text {
+    font-size: 1rem;
+    color: #94a3b8;
+    max-width: 540px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Action button configurations layout styling row */
+.hero-action-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cv-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 6px; /* Matching clean rectangular curve styles */
+    transition: all 0.25s ease;
+}
+
+.primary-btn {
+    background-color: #8b5cf6;
+    color: #ffffff;
+    border: 1px solid #8b5cf6;
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.25);
+}
+
+.primary-btn:hover {
+    background-color: #7c3aed;
+    border-color: #7c3aed;
+    transform: translateY(-2px);
+}
+
+.secondary-ghost-btn {
+    background-color: transparent;
+    color: #cbd5e1;
+    border: 2px solid #475569;
+}
+
+.secondary-ghost-btn:hover {
+    border-color: #8b5cf6;
+    color: #ffffff;
+    background-color: rgba(139, 92, 246, 0.05);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUT ENGINE SCALER
+   ========================================== */
+@media (max-width: 900px) {
+    .hero-layout-container {
+        flex-direction: column; /* Collapses columns into vertical stacks on mobile screens */
+        text-align: center;
+        gap: 40px;
+    }
+    .hero-right-col {
+        text-align: center;
+        align-items: center;
+    }
+    .hero-right-col h2 {
+        text-align: center;
+    }
+    .hero-action-buttons {
+        justify-content: center;
+    }
+    .name-display {
+        font-size: 2.8rem;
+    }
+    .avatar-img, .profile-avatar-container::before {
+        width: 220px;
+        height: 220px;
+    }
+}
+/* ==========================================
+   WAVING AVATAR ANIMATION (LIKE THE VIDEO)
+   ========================================== */
+.waving-effect {
+    /* Sets the pivot point at the bottom center so it sways like a real torso/hand wave */
+    transform-origin: bottom center; 
+    animation: waveHello 3.5s ease-in-out infinite;
+}
+
+/* Pause the waving motion if a user places their mouse cursor over the avatar */
+.waving-effect:hover {
+    animation-play-state: paused;
+}
+
+@keyframes waveHello {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(4deg); /* Tilt right */
+    }
+    20% {
+        transform: rotate(-4deg); /* Tilt left */
+    }
+    30% {
+        transform: rotate(3deg);  /* Gentle tilt right */
+    }
+    40% {
+        transform: rotate(-2deg); /* Gentle tilt left */
+    }
+    50% {
+        transform: rotate(0deg);  /* Return to center */
+    }
+    /* 50% to 100% creates a natural pause before it waves again */
+}
+/* ==========================================
+   INFINITE SCROLLING TECH STACK SLIDER (FIXED)
+   ========================================== */
+.slider-container::before {
+    left: 0;
+    top: 0;
+    /* FIX: Fades smoothly using the active background color variable */
+    background: linear-gradient(to right, var(--bg-primary) 0%, transparent 100%);
+}
+
+.slider-container::after {
+    right: 0;
+    top: 0;
+    /* FIX: Fades smoothly using the active background color variable */
+    background: linear-gradient(to left, var(--bg-primary) 0%, transparent 100%);
+}
+/* ==========================================
+   1. HERO BUTTONS FIX (Screenshot 9.22.32)
+   ========================================== */
+.secondary-ghost-btn {
+    background-color: transparent;
+    /* FIX: Force text to use your theme's dark main color so it is black/dark slate in light mode */
+    color: var(--text-main) !important; 
+    border: 2px solid #475569;
+}
+
+.secondary-ghost-btn:hover {
+    border-color: #8b5cf6;
+    /* Ensure it remains visible on hover */
+    color: #ffffff !important;
+    background-color: #8b5cf6;
+}
+
+/* ==========================================
+   2. EDUCATION TITLES FIX (Screenshot 9.22.42)
+   ========================================== */
+.timeline-content h3 {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.2rem;
+    /* FIX: Force college/school names to appear in your theme's purple color */
+    color: #8b5cf6 !important; 
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* ==========================================
+   3. PROJECTS CONTENT & BADGES FIX (Screenshot 9.23.00)
+   ========================================== */
+.project-card h3 {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.35rem;
+    /* FIX: Force project names to be visible using the main theme text color (black in light mode) */
+    color: var(--text-main) !important; 
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+/* FIX: Programming language badges now have a white background and black text */
+.project-tags span {
+    background-color: #ffffff !important; /* Pure white background badge */
+    color: #0b0713 !important;            /* Sharp black/dark plum text */
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;            /* Clean light border for structure */
+    display: inline-block;
+}
+
+/* Small adjustments for dark mode to keep badges crisp */
+body.dark-theme .project-tags span {
+    background-color: #ffffff !important;
+    color: #0b0713 !important;
+    border: 1px solid #251b3d;
+}
+/* ==========================================
+   GITHUB HOVER ACCENTS FOR PROJECT CARDS
+   ========================================== */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+/* Base icon state (Hidden, shifted slightly right) */
+.github-project-link {
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Icon style adjustments when pointing over the icon itself */
+.github-project-link:hover {
+    color: #9061f9 !important; /* Glows your pastel purple color on pointer overlap */
+}
+
+/* CRITICAL: Trigger visibility when the card wrapper container is touched by the arrow */
+.project-card:hover .github-project-link {
+    opacity: 1;
+    transform: translateX(0); /* Slides smoothly into position */
+}
+/* ==========================================
+   CONTACT SECTION & FOOTER THEME TUNING (FIXED)
+   ========================================== */
+#contact {
+    background-color: var(--bg-primary);
+    text-align: center;
+    padding: 80px 10%;
+    transition: background-color 0.4s ease;
+}
+
+.contact-container h2 {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 2.2rem;
+    color: var(--text-main) !important; /* Forces title text out of dark invisibility */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.contact-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.email-link {
+    color: #9061f9;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Social link text adjustments */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.social-item {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+}
+
+.social-item:hover {
+    color: #9061f9; /* Turns pastel purple on contact hover */
+}
+
+/* Footer Section Adjustment */
+footer {
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 30px 10%;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
